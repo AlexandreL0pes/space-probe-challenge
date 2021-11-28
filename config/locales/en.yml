@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  services:
+    invalid_commands: "Invalid commands informed, please verify your data."
