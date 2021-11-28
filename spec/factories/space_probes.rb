@@ -5,8 +5,8 @@ FactoryBot.define do
     front_direction { 'E' }
 
     trait :initial_position do
-      position_x { 2 }
-      position_y { 3 }
+      position_x { 0 }
+      position_y { 0 }
       front_direction { 'D' }
     end
 
@@ -20,6 +20,12 @@ FactoryBot.define do
       position_x { 0 }
       position_y { 4 }
       front_direction { 'C' }
+    end
+
+    trait :in_x_and_y_limit do
+      position_x { 4 }
+      position_y { 4 }
+      front_direction { 'D' }
     end
   end
 end
