@@ -26,9 +26,12 @@ RSpec.describe SpaceProbe::Move do
         dir: 'D'
       }
     end
+    let(:calculate_mock) { double(:mock) }
     before(:each) do
       allow(SpaceProbe::CalculatePosition).to receive(:new)
         .with(space_probe: probe, commands: commands)
+        .and_return(calculate_mock)
+      allow(calculate_mock).to receive(:call)
         .and_return(calculated_position)
     end
 

@@ -7,8 +7,7 @@ class SpaceProbe::Move
   def call
     raise_invalid_commands unless valid_commands?
 
-    position = SpaceProbe::CalculatePosition.new(space_probe: space_probe, commands: commands)
-
+    position = SpaceProbe::CalculatePosition.new(space_probe: space_probe, commands: commands).call
     space_probe.update!(position_x: position[:x], position_y: position[:y], front_direction: position[:dir])
 
     space_probe
