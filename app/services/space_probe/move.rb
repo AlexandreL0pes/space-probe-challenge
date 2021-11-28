@@ -18,6 +18,8 @@ class SpaceProbe::Move
   attr_accessor :commands, :space_probe
 
   def valid_commands?
+    return false if commands.nil?
+    
     (commands - %w[GE GD M]).empty?
   end
 
