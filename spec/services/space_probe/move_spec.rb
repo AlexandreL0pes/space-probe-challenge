@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe SpaceProbe::Move do
   let(:probe) { create(:space_probe, :initial_position) }
-  let(:probe_id) { probe.id }
   let(:commands) { ['GE', 'M', 'M', 'M', 'GD', 'M', 'M']}
 
-  subject { described_class.new(space_probe_id: probe_id, commands: commands) }
+  subject { described_class.new(space_probe: probe, commands: commands) }
 
   describe 'when commands' do
     let(:commands) { ['EG', 'M', 'M']}
@@ -18,18 +17,6 @@ RSpec.describe SpaceProbe::Move do
       end
     end
   end
-
-  describe 'when probe' do
-    context 'is not found' do
-      let(:probe_id) { 404 }
-      it 'raises exception' do
-        expect do 
-          subject.call
-        end.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
-  end
-
 
   describe 'when commands and probe are valid' do
     let(:calculated_position) do

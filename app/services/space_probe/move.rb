@@ -1,6 +1,6 @@
 class SpaceProbe::Move
-  def initialize(space_probe_id:, commands:)
-    @space_probe = SpaceProbe.find(space_probe_id)
+  def initialize(space_probe:, commands:)
+    @space_probe = space_probe
     @commands = commands
   end
 
