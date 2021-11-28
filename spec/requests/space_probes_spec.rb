@@ -60,6 +60,12 @@ RSpec.describe 'SpaceProbes', type: :request do
       space_probe
     end
 
+    let(:params) do
+      {
+        commands: commands
+      }
+    end
+
     context 'when space probe is not found' do
       let(:probe_id) { 404 }
       it 'raises exception' do
@@ -69,13 +75,38 @@ RSpec.describe 'SpaceProbes', type: :request do
       end
     end
 
-    context 'receive an success response' do
-      let(:params) do
+    context 'when commands leads to a invalid position' do
+      let(:calculate_mock) { double(:mock) }
+      let(:invalid_position) do
         {
-          commands: commands
+          x: 5,
+          y: 5,
+          dir: 'U'
         }
       end
 
+      before do
+        allow(SpaceProbe::CalculatePosition).to receive(:new).and_return(calculate_mock)
+        allow(calculate_mock).to receive(:call).and_return(invalid_position)
+      end
+
+      it do
+        put "/space_probes/#{space_probe.id}/move", params: params
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+
+    context 'when commands are invalid' do
+      let(:commands) { ['GDX', 'M', 'M'] }
+
+      it do
+        put "/space_probes/#{space_probe.id}/move", params: params
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context 'receive an success response' do
       before(:each) do
         allow(SpaceProbe::Move).to receive(:new)
           .with(space_probe: space_probe, commands: commands)
@@ -88,6 +119,17 @@ RSpec.describe 'SpaceProbes', type: :request do
         put "/space_probes/#{space_probe.id}/move", params: params
         expect(response).to have_http_status(:ok)
       end
+    end
+  end
+
+  describe 'GET /:id' do
+    let(:probe) { create(:space_probe) }
+
+    it 'show a specific space probe' do
+      get "/space_probes/#{probe.id}/position"
+
+      expect(response).to have_http_status(:ok)
+      expect(response_body.keys).to contain_exactly(:id, :position_x, :position_y, :front_direction, :created_at, :updated_at)
     end
   end
 end
