@@ -23,7 +23,7 @@ class SpaceProbe::CalculatePosition
   end
 
   private
-  
+
   def change_direction(movement)
     @current_direction = directions[movement][@current_direction]
   end

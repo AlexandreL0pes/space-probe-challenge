@@ -18,10 +18,10 @@ class SpaceProbe::Move
   attr_accessor :commands, :space_probe
 
   def valid_commands?
-    (commands - ['GE', 'GD', 'M']).empty?
+    (commands - %w[GE GD M]).empty?
   end
 
   def raise_invalid_commands
-    raise SpaceProbe::Exceptions::InvalidCommands.new
+    raise SpaceProbe::Exceptions::InvalidCommands
   end
 end

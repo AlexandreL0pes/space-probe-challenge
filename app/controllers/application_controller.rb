@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-
   rescue_from ActiveRecord::RecordInvalid do |e|
     render json: { message: e }, status: :bad_request
   end

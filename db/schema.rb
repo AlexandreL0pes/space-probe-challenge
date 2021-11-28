@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_28_175517) do
-
+ActiveRecord::Schema.define(version: 20_211_128_175_517) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "space_probes", force: :cascade do |t|
-    t.integer "position_x"
-    t.integer "position_y"
-    t.string "front_direction"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'space_probes', force: :cascade do |t|
+    t.integer 'position_x'
+    t.integer 'position_y'
+    t.string 'front_direction'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
-
 end

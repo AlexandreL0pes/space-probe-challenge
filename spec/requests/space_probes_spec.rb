@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "SpaceProbes", type: :request do
-  describe "GET /index" do
+RSpec.describe 'SpaceProbes', type: :request do
+  describe 'GET /index' do
     let!(:probes) { create_list(:space_probe, 2) }
 
     it 'show all space probes' do
@@ -12,20 +12,20 @@ RSpec.describe "SpaceProbes", type: :request do
     end
   end
 
-  describe "POST /" do
+  describe 'POST /' do
     it 'creates a new probe' do
-      post '/space_probes' 
+      post '/space_probes'
       expect(response).to have_http_status(:created)
     end
     it 'creates a new probe' do
-      expect do 
-        post '/space_probes' 
+      expect do
+        post '/space_probes'
       end.to change { SpaceProbe.count }
         .by(1)
     end
   end
 
-  describe "PUT /:id/initial_position" do
+  describe 'PUT /:id/initial_position' do
     let(:space_probe) { create(:space_probe) }
     context 'updates probe to 0,0,D' do
       it 'updates position x' do
@@ -53,19 +53,18 @@ RSpec.describe "SpaceProbes", type: :request do
 
   describe 'PUT /:id/move' do
     let(:space_probe) { create(:space_probe) }
-    let(:commands) { ['GE', 'M'] }
+    let(:commands) { %w[GE M] }
     let(:move_mock) { double(:move) }
-    let(:updated_probe) do 
+    let(:updated_probe) do
       space_probe.update(position_x: 0, position_y: 1, front_direction: 'C')
       space_probe
     end
-    
-    
+
     context 'when space probe is not found' do
       let(:probe_id) { 404 }
       it 'raises exception' do
         put "/space_probes/#{probe_id}/move"
-        
+
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -79,8 +78,8 @@ RSpec.describe "SpaceProbes", type: :request do
 
       before(:each) do
         allow(SpaceProbe::Move).to receive(:new)
-        .with(space_probe: space_probe, commands: commands)
-        .and_return(move_mock)
+          .with(space_probe: space_probe, commands: commands)
+          .and_return(move_mock)
 
         allow(move_mock).to receive(:call).and_return(updated_probe)
       end

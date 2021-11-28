@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe SpaceProbe, type: :model do
-  let(:valid_directions) { ['E', 'D', 'C', 'B'] }
-  it do 
+  let(:valid_directions) { %w[E D C B] }
+  it do
     should validate_inclusion_of(:position_x).in?(0..4)
   end
 
-  it do 
+  it do
     should validate_inclusion_of(:position_y).in?(0..4)
   end
 
