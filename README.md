@@ -179,9 +179,13 @@ Movimenta a sona para sua posição inicial, nos pontos x: 0, y: 0 e d: 'D'. Ess
 
 # Informações adicionais
 
-- Ruby versão 3.0.0, RoR versão 6.1.4, PostgreSQL versão 12.9
+- Ruby versão 3.0.0, RoR versão 6.1.4, PostgreSQL versão 12.9;
 
-- Estatísticas sobre a cobertura dos testes (SimpleCov Gem)
+- Aplicação hospedada no Heroku;
+
+- Caso surjam dúvidas sobre a instalação ou uso da aplicação me avisem que ajudo no que for preciso :)
+
+- Estatísticas sobre a cobertura dos testes (SimpleCov Gem);
 
 <div align="center">
   <image align="center" src=".github/code-coverage.png" width="800px">
