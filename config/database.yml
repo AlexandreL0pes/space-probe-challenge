@@ -85,7 +85,8 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: space_probe_challenge_production
-  username: space_probe_challenge
-  password: <%= ENV['SPACE_PROBE_CHALLENGE_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  pool: <%= ENV.fetch("DB_MAX_CONNECTIONS") { 5 } %>
+  variables:
+    statement_timeout: <%= ENV.fetch("RAILS_MAX_TIMEOUT") { 5000 } %>
+  url: <%= ENV.fetch("DATABASE_URL") %>
