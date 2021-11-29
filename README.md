@@ -47,7 +47,7 @@ Depois disso a aplicação estará disponível em [http://localhost:3000](http:/
 
 # Docs
 
-As requisições HTTPs utilizadas para o consumo da API estão dentro do respositório nesse [arquivo](.github/Insomnia_2021-11-28.json), mas podem ser importadas diretamente pelo botão abaixo:
+As requisições HTTPs utilizadas para o consumo da API estão dentro do respositório nesse [arquivo](.github/Insomnia_2021-11-28.json), mas podem ser importadas diretamente pelo botão abaixo. A aplicação também está disponível em: [https://agile-springs-19031.herokuapp.com/](https://agile-springs-19031.herokuapp.com/)
 <br>
 
 <div align="left">
@@ -59,48 +59,32 @@ As requisições HTTPs utilizadas para o consumo da API estão dentro do resposi
       <td>Endpoint</td>
       <td>Verbo</td>
       <td>Descrição</td>
-      <td>Exemplo</td>
     </tr>
   <tbody>
     <tr>
       <td>/space_probes</td>
       <td>GET</td>
       <td>Obtêm todas as sondas existentes</td>
-      <td> 
-        <a href="#">Exemplo</a>
-      </td>
     </tr>
     <tr>
       <td>/space_probes/:id/position</td>
       <td>GET</td>
       <td>Obtêm a posição de uma sonda específica</td>
-      <td> 
-        <a href="#">Exemplo</a>
-      </td>
     </tr>
     <tr>
       <td>/space_probes</td>
       <td>POST</td>
       <td>Efetua a criação de uma nova sonda</td>
-      <td> 
-        <a href="#">Exemplo</a>
-      </td>
     </tr> 
     <tr>
       <td>/space_probes/:id/move</td>
       <td>PUT</td>
       <td>Movimenta a sonda especificada na requisição <br>com base nos comandos informados</td>
-      <td> 
-        <a href="#">Exemplo</a>
-      </td>
     </tr>
     <tr>
       <td>/space_probes/:id/reset</td>
       <td>PUT</td>
       <td>Movimenta a sonda para a posição inicial</td>
-      <td> 
-        <a href="#">Exemplo</a>
-      </td>
     </tr>
   </tbody>
 </table>
@@ -177,7 +161,7 @@ Exemplo de resposta:
 ### PUT /space_probes/:id/reset
 Movimenta a sona para sua posição inicial, nos pontos x: 0, y: 0 e d: 'D'. Esse endpoint retorna apenas o status da requisição.
 
-<br><br>
+<br>
 
 ## Comandos úteis
 
