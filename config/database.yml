@@ -29,6 +29,7 @@ default: &default
 development:
   <<: *default
   database: space_probe_challenge_development
+  url: <%= ENV.fetch("DEV_DATABASE_URL") { 'postgres://postgres:postgres@db/space_probe_challenge_development' } %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -63,6 +64,7 @@ development:
 test:
   <<: *default
   database: space_probe_challenge_test
+  url: <%= ENV.fetch("TEST_DATABASE_URL") { 'postgres://postgres:postgres@db/space_probe_challenge_development' } %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
